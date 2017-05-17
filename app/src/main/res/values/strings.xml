@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DeRuta</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="login">Entrar</string>
+    <string name="login_fail">Ha ocurrido un error</string>
+</resources>
