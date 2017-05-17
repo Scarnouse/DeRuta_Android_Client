@@ -19,7 +19,8 @@ public class User {
     @SerializedName("first_name")
     private String firstName;
 
-    private Bitmap userImage;
+    @SerializedName("filename_image")
+    private String userImage;
 
     /*private ArrayList<Route> routes;*/
 
@@ -55,11 +56,11 @@ public class User {
         this.firstName = firstName;
     }
 
-    public Bitmap getUserImage() {
+    public String getUserImage() {
         return userImage;
     }
 
-    public void setUserImage(Bitmap userImage) {
+    public void setUserImage(String userImage) {
         this.userImage = userImage;
     }
 

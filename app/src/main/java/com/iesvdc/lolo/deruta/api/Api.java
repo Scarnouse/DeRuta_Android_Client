@@ -54,14 +54,17 @@ public class Api {
                     Log.i("LOG_VOLLEY_RESPONSE", response);
 
                     Gson gson = new Gson();
-
                     User user = gson.fromJson(response, User.class);
-                    Log.i("LOG_VOLLEY_RESPONSE", user.toString());
+                    Log.i("USER", user.toString());
+
+                    listener.onSuccess(user);
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     Log.e("LOG_VOLLEY_ERROR", error.toString());
+
+                    listener.onError(error.toString());
                 }
             }) {
                 @Override
