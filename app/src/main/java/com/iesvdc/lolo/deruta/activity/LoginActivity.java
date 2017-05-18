@@ -1,5 +1,6 @@
 package com.iesvdc.lolo.deruta.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -53,7 +54,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         UserManager.getInstance(this).login(userName, userPass, new Manager.Listener<User>() {
             @Override
             public void onSuccess(User data) {
-                Log.e(getClass().getName(), "onLogin(): Login success " + data.getEmail());
+                Log.i(getClass().getName(), "onLogin(): Login success " + data.getEmail());
                 gotoDashboard();
             }
 
@@ -74,8 +75,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void gotoDashboard(){
-        Log.i(TAG, "gotoDashboard");
-        //TODO goto next activity
+        Log.i(TAG, "gotoDashboard()");
+        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
     private void showDialog(String title, String content){

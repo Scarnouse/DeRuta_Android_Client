@@ -4,4 +4,7 @@
 
     <string name="login">Entrar</string>
     <string name="login_fail">Ha ocurrido un error</string>
+
+    <!-- Drawer Strings -->
+    <string name="drawer_item_home">Inicio</string>
 </resources>
