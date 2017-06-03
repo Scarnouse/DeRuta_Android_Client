@@ -1,12 +1,15 @@
 package com.iesvdc.lolo.deruta.activity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.iesvdc.lolo.deruta.R;
 import com.iesvdc.lolo.deruta.component.Dialog;
@@ -55,7 +58,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onSuccess(User data) {
                 Log.i(getClass().getName(), "onLogin(): Login success " + data.getEmail());
-                gotoDashboard();
+                if(data.getId() == null){
+                    showDialog(getString(R.string.login), getString(R.string.user_or_pass_wrong));
+                } else {
+                    gotoDashboard();
+                }
             }
 
             @Override
@@ -82,7 +89,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void showDialog(String title, String content){
-        Dialog dialog = new Dialog(this);
-        dialog.show(title, content, getString(android.R.string.ok), null);
+        AlertDialog.Builder builder;
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog);
+        } else {
+            builder = new AlertDialog.Builder(this);
+        }
+        builder.setMessage(content)
+                .setCancelable(true)
+                .show();
     }
 }

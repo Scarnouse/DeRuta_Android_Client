@@ -4,6 +4,10 @@
 
     <string name="login">Entrar</string>
     <string name="login_fail">Ha ocurrido un error</string>
+    <string name="user_or_pass_wrong">Usuario o contraseña incorrectos</string>
+
+    <string name="wait">Cargando…</string>
+    <string name="ok">OK</string>
 
     <!-- Drawer Strings -->
     <string name="drawer_item_home">Inicio</string>

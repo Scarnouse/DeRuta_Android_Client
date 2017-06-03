@@ -1,6 +1,7 @@
 package com.iesvdc.lolo.deruta.api;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.android.volley.AuthFailureError;
@@ -9,6 +10,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
@@ -87,7 +89,9 @@ public class Api {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
 
+    public void getImageProfile(final User user, final Manager.Listener<Bitmap> listener){
 
     }
 }

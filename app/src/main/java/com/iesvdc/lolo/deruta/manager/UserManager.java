@@ -1,6 +1,7 @@
 package com.iesvdc.lolo.deruta.manager;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 
 import com.iesvdc.lolo.deruta.api.Api;
 import com.iesvdc.lolo.deruta.model.RequestError;
@@ -58,5 +59,24 @@ public class UserManager extends Manager{
                 }
             });
         }
+    }
+
+    public void getImageProfile(User user, final Manager.Listener<Bitmap> listener){
+        Api.getInstance(context).getImageProfile(user, new Listener<Bitmap>() {
+            @Override
+            public void onSuccess(Bitmap data) {
+                listener.onSuccess(data);
+            }
+
+            @Override
+            public void onCancel(RequestError error) {
+                listener.onCancel(error);
+            }
+
+            @Override
+            public void onError(String error) {
+                listener.onError(error);
+            }
+        });
     }
 }

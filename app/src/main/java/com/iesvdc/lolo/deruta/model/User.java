@@ -22,6 +22,8 @@ public class User {
     @SerializedName("filename_image")
     private String userImage;
 
+    private Bitmap image;
+
     /*private ArrayList<Route> routes;*/
 
     public String getId() {
@@ -62,6 +64,14 @@ public class User {
 
     public void setUserImage(String userImage) {
         this.userImage = userImage;
+    }
+
+    public Bitmap getImage() {
+        return image;
+    }
+
+    public void setImage(Bitmap image) {
+        this.image = image;
     }
 
     @Override
