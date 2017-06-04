@@ -9,10 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.iesvdc.lolo.deruta.R;
-import com.iesvdc.lolo.deruta.component.Dialog;
 import com.iesvdc.lolo.deruta.manager.Manager;
 import com.iesvdc.lolo.deruta.manager.UserManager;
 import com.iesvdc.lolo.deruta.model.RequestError;
@@ -59,7 +57,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onSuccess(User data) {
                 Log.i(getClass().getName(), "onLogin(): Login success " + data.getEmail());
                 if(data.getId() == null){
-                    showDialog(getString(R.string.login), getString(R.string.user_or_pass_wrong));
+                    showDialog(getString(R.string.error), getString(R.string.user_or_pass_wrong));
                 } else {
                     gotoDashboard();
                 }
@@ -69,14 +67,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onCancel(RequestError error) {
                 Log.e(getClass().getName(), "onLogin(): Login cancel " + error.getMessage());
 
-                showDialog(getString(R.string.login), error.getMessage());
+                showDialog(getString(R.string.error), error.getMessage());
             }
 
             @Override
             public void onError(String error) {
                 Log.e(getClass().getName(), "onLogin(): Login failed " + error);
 
-                showDialog(getString(R.string.login), getString(R.string.login_fail));
+                showDialog(getString(R.string.error), getString(R.string.login_fail));
             }
         });
     }
@@ -88,7 +86,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         startActivity(intent);
     }
 
-    private void showDialog(String title, String content){
+    public void showDialog(String title, String content){
         AlertDialog.Builder builder;
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
@@ -96,7 +94,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         } else {
             builder = new AlertDialog.Builder(this);
         }
-        builder.setMessage(content)
+        builder.setTitle(title)
+                .setMessage(content)
                 .setCancelable(true)
                 .show();
     }

@@ -2,6 +2,7 @@ package com.iesvdc.lolo.deruta.component;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
@@ -85,4 +86,6 @@ public class Dialog {
     AlertDialog getDialog(){
         return this.m_dialog;
     }
+
+
 }

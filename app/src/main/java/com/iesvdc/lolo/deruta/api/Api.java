@@ -14,6 +14,8 @@ import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.iesvdc.lolo.deruta.R;
+import com.iesvdc.lolo.deruta.component.Dialog;
 import com.iesvdc.lolo.deruta.manager.Manager;
 import com.iesvdc.lolo.deruta.model.User;
 
@@ -26,6 +28,7 @@ public class Api {
     private static Api instance;
     private Context context;
     private final String HOST =  "http://10.0.2.2:8000/app_dev.php/api/v1";
+
 
     private Api(Context context){
         this.context = context;
